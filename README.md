@@ -12,11 +12,9 @@ cURL (apt-get install php5-curl)
 
 1. Install
 
-    {
-		<h3>URL DE DESCARGA</h3>
-	}
+    pear install https://github.com/elibom/elibom-php-codeigniter/archive/master.zip
 	
-1. Modificamos nuestras credenciales en el archivo <b>elibom.php</b> en application/config
+2. Modify credentials in the file <b>elibom.php</b> located in application/config:
 
 	```php
 		// user : email de elibom
@@ -25,9 +23,10 @@ cURL (apt-get install php5-curl)
 		$config['user'] 	= 'xxxxxxxxxxx';
 		$config['token'] 	= 'xxxxxxxxxxx';
 	```
+	 Note: You can find your api password at http://www.elibom.com/api-password (make sure you are logged in).
 
 
-2. Creamos un archivo en el directorio application/controllers al cual llamaremos <b>sms.php</b>:
+3. Create the controller in the folder application/controllers:
 
     ```php
 	class Sms extends CI_Controller {
@@ -38,17 +37,14 @@ cURL (apt-get install php5-curl)
 		}
 		public function index()
 		{
-			$sms = $this->elibom->sendMessage('numero de celular', 'texto del mensaje');
+			$sms = $this->elibom->sendMessage('number', 'text');
 		}
 
     ```
     
-    Note: You can find your api password at http://www.elibom.com/api-password (make sure you are logged in).
-    
-    You are now ready to start calling the API methods!
+    Elibom's library <b>(application/libraries)</b> exposes the following methods:
 
 <h2>API Methods</h2>
-<h4><b>elibom.php</b>  application/libraries</h4>
 
 
 * [Send SMS](#send-sms)
@@ -117,3 +113,11 @@ $user = $this->elibom->getUser('<user_id>');
 //Return json object
 $account = $this->elibom->getAccount();
 ```
+
+## Contributors
+
+Special thanks to the developers who wrote this library:
+
+* [Nolberto Vilchez Moreno](http://www.facebook.com/jvilchezmoreno)
+* [Renzo Aliaga Rios]
+
